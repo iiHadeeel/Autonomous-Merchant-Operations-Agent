@@ -199,5 +199,3 @@ All thresholds live at the top of each script so they can be adjusted without to
 | `REPEATED_MSG_THRESHOLD` | sentiment | 10 | Min occurrences to flag a message as a template |
 
 ---
-
-*Salla Autonomous Merchant Operations Agent · Junior Developer Case Study*
