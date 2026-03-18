@@ -1,4 +1,3 @@
-# Build Notes — Salla Merchant Operations Agent
 
 ---
 
