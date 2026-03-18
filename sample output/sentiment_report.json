@@ -1,0 +1,212 @@
+{
+  "report_date": "2026-03-18",
+  "generated_at": "2026-03-18 23:36",
+  "executive_summary": {
+    "total_messages": 5000,
+    "unique_templates": 32,
+    "overall_sentiment": {
+      "neutral": 22,
+      "positive": 4,
+      "negative": 6
+    },
+    "dominant_sentiment": "neutral",
+    "alert_count": 3,
+    "high_urgency_count": 10
+  },
+  "classifier_breakdown": {
+    "rule_based": 5000
+  },
+  "category_breakdown": {
+    "Transactional Request": {
+      "count": 4,
+      "sentiment": {
+        "neutral": 4
+      },
+      "urgency": {
+        "low": 2,
+        "high": 2
+      }
+    },
+    "Complaint": {
+      "count": 14,
+      "sentiment": {
+        "positive": 2,
+        "neutral": 6,
+        "negative": 6
+      },
+      "urgency": {
+        "low": 4,
+        "medium": 2,
+        "high": 8
+      }
+    },
+    "Suggestion": {
+      "count": 4,
+      "sentiment": {
+        "neutral": 4
+      },
+      "urgency": {
+        "low": 2,
+        "high": 2
+      }
+    },
+    "Inquiry": {
+      "count": 10,
+      "sentiment": {
+        "neutral": 8,
+        "positive": 2
+      },
+      "urgency": {
+        "low": 5,
+        "high": 5
+      }
+    }
+  },
+  "top_products_by_complaints": {
+    "EarBud Pro": {
+      "mentions": 4,
+      "negative": 4,
+      "complaints": 4
+    },
+    "Cook Set": {
+      "mentions": 2,
+      "negative": 0,
+      "complaints": 2
+    },
+    "Blender": {
+      "mentions": 2,
+      "negative": 0,
+      "complaints": 2
+    },
+    "T-shirt": {
+      "mentions": 2,
+      "negative": 2,
+      "complaints": 2
+    },
+    "Coffee Press": {
+      "mentions": 2,
+      "negative": 0,
+      "complaints": 0
+    },
+    "Sneakers": {
+      "mentions": 4,
+      "negative": 0,
+      "complaints": 0
+    },
+    "EarBuds": {
+      "mentions": 4,
+      "negative": 0,
+      "complaints": 0
+    }
+  },
+  "high_urgency_messages": [
+    {
+      "message_id": "5",
+      "channel": "in-app",
+      "category": "Complaint",
+      "summary": "Customer reports refund me. the blender stopped working after 3 uses",
+      "product": "Blender"
+    },
+    {
+      "message_id": "7",
+      "channel": "in-app",
+      "category": "Complaint",
+      "summary": "Customer reports hey, just wondering… is the ‘earbud pro’ supposed to buzz while charging? not su",
+      "product": "EarBud Pro"
+    },
+    {
+      "message_id": "11",
+      "channel": "whatsapp",
+      "category": "Transactional Request",
+      "summary": "Customer requests i want to change the size of the sneakers i bought yesterday, can u help? pls re",
+      "product": "Sneakers"
+    },
+    {
+      "message_id": "23",
+      "channel": "email",
+      "category": "Complaint",
+      "summary": "Customer reports my t-shirt arrived but the material feels cheap… kinda itchy. pls respond asap",
+      "product": "T-shirt"
+    },
+    {
+      "message_id": "31",
+      "channel": "in-app",
+      "category": "Complaint",
+      "summary": "Customer reports where’s my order?? it said delivery 2 days ago. this is ridiculous. pls respond",
+      "product": null
+    },
+    {
+      "message_id": "47",
+      "channel": "chat",
+      "category": "Inquiry",
+      "summary": "Customer asks about your prices increasing every week?? what’s going on? pls respond asap",
+      "product": null
+    },
+    {
+      "message_id": "48",
+      "channel": "email",
+      "category": "Complaint",
+      "summary": "Customer reports the cook set is good but the lids don’t fit perfectly. just fyi. pls respond asa",
+      "product": "Cook Set"
+    },
+    {
+      "message_id": "69",
+      "channel": "in-app",
+      "category": "Suggestion",
+      "summary": "Customer suggests could you add more colors of the slim tshirt? only black is boring (no offense l",
+      "product": null
+    },
+    {
+      "message_id": "88",
+      "channel": "in-app",
+      "category": "Inquiry",
+      "summary": "Customer asks about that coffee press is amazing but i wish it came in 1.5l too. pls respond asap",
+      "product": "Coffee Press"
+    },
+    {
+      "message_id": "287",
+      "channel": "whatsapp",
+      "category": "Inquiry",
+      "summary": "Customer asks about how do i pair the earbuds with samsung s22? the manual isn’t clear. pls respond",
+      "product": "EarBuds"
+    }
+  ],
+  "alerts": [
+    {
+      "type": "COMPLAINT_SPIKE",
+      "severity": "high",
+      "rate_pct": 43.8,
+      "complaints": 2188,
+      "total_msgs": 5000,
+      "message": "Complaint rate 43.8% across 5,000 messages — well above the 30% alert threshold."
+    },
+    {
+      "type": "PRODUCT_QUALITY_ALERT",
+      "severity": "medium",
+      "product": "EarBud Pro",
+      "complaints": 4,
+      "negative_rate_pct": 100.0,
+      "message": "'EarBud Pro' has 4 complaint(s) today (100% negative). Review product quality."
+    },
+    {
+      "type": "REPEATED_MESSAGES",
+      "severity": "medium",
+      "count": 32,
+      "message": "32 distinct message template(s) each appear ≥10 times — possible automated complaints or copy-paste customer campaign.",
+      "top_examples": [
+        {
+          "text": "Refund me. The blender stopped working after 3 uses.",
+          "count": 439
+        },
+        {
+          "text": "My t-shirt arrived but the material feels cheap… kinda itchy.",
+          "count": 430
+        },
+        {
+          "text": "The cook set is good but the lids don’t fit perfectly. Just FYI.",
+          "count": 421
+        }
+      ]
+    }
+  ]
+}

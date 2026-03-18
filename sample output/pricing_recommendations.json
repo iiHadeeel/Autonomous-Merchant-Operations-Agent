@@ -1,0 +1,219 @@
+{
+  "generated_at": "2026-03-18 23:37",
+  "constraints": {
+    "HC1_min_margin_pct": 15,
+    "HC2_neg_sentiment_block_pct": 30,
+    "HC2_complaint_block_threshold": 3,
+    "target_margin_pct": 35,
+    "max_single_increase_pct": 10
+  },
+  "recommendations": [
+    {
+      "product_id": "1000",
+      "title": "Slim Fit T-shirt",
+      "category": "Clothes > Mens",
+      "current_price": 49.99,
+      "cost": null,
+      "current_margin_pct": null,
+      "action": "HOLD",
+      "recommended_price": 49.99,
+      "new_margin_pct": null,
+      "avg_rating": null,
+      "market_trend": "unknown",
+      "competitor_range": "unknown",
+      "avg_daily_complaints": 0.0,
+      "signals_used": [
+        "Cost missing — HC-1 cannot be verified"
+      ],
+      "constraints_checked": [
+        "HC-1 UNVERIFIABLE — holding as safe default"
+      ],
+      "explanation": "'Slim Fit T-shirt' is priced at 49.99 SAR but has no cost recorded. HC-1 (never price below cost) cannot be checked, so the price is held. Action: enter the cost so margin analysis can proceed.",
+      "generated_at": "2026-03-18 23:37"
+    },
+    {
+      "product_id": "1001",
+      "title": "Coffee Press",
+      "category": "Kitchen & Dining",
+      "current_price": 89.99,
+      "cost": 40.0,
+      "current_margin_pct": 55.6,
+      "action": "HOLD",
+      "recommended_price": 89.99,
+      "new_margin_pct": 55.6,
+      "avg_rating": 4.21,
+      "market_trend": "unclear",
+      "competitor_range": "65–100",
+      "avg_daily_complaints": 1.6,
+      "signals_used": [
+        "Price: 89.99 SAR  |  cost: 40.00 SAR  |  current margin: 55.6%",
+        "Rating: 4.21/5.0  |  avg daily complaints: 1.6  |  trend: unclear  |  competitor: 65–100 SAR",
+        "Sentiment: 2 mention(s), 0 complaint(s), 0.0% negative",
+        "Margin 55.6% meets or exceeds the 35% target — no margin pressure"
+      ],
+      "constraints_checked": [
+        "HC-1: minimum floor = 47.06 SAR  (cost 40.00 / 0.85, ensures 15% margin)",
+        "HC-2: price increase is PERMITTED — neg rate 0.0% <= 30%, complaints 0 < 3, trend 'unclear' is not negative"
+      ],
+      "explanation": "'Coffee Press' has a comfortable 55.6% margin at 89.99 SAR. Rating 4.21/5, trend 'unclear', avg 1.6 daily complaints — no signal strong enough to justify a change. Competitor midpoint: ~82 SAR — current price is above market average. Current price maintained.",
+      "generated_at": "2026-03-18 23:37"
+    },
+    {
+      "product_id": "1004",
+      "title": "3pc Cook Set – Steel",
+      "category": "Kitchen & Dining",
+      "current_price": 250.0,
+      "cost": null,
+      "current_margin_pct": null,
+      "action": "HOLD",
+      "recommended_price": 250.0,
+      "new_margin_pct": null,
+      "avg_rating": null,
+      "market_trend": "unknown",
+      "competitor_range": "unknown",
+      "avg_daily_complaints": 0.0,
+      "signals_used": [
+        "Cost missing — HC-1 cannot be verified"
+      ],
+      "constraints_checked": [
+        "HC-1 UNVERIFIABLE — holding as safe default"
+      ],
+      "explanation": "'3pc Cook Set – Steel' is priced at 250.00 SAR but has no cost recorded. HC-1 (never price below cost) cannot be checked, so the price is held. Action: enter the cost so margin analysis can proceed.",
+      "generated_at": "2026-03-18 23:37"
+    },
+    {
+      "product_id": "1005",
+      "title": "Foldable Table",
+      "category": "",
+      "current_price": 399.0,
+      "cost": 280.0,
+      "current_margin_pct": 29.8,
+      "action": "INCREASE",
+      "recommended_price": 430.77,
+      "new_margin_pct": 35.0,
+      "avg_rating": null,
+      "market_trend": "unknown",
+      "competitor_range": "unknown",
+      "avg_daily_complaints": 0.0,
+      "signals_used": [
+        "Price: 399.00 SAR  |  cost: 280.00 SAR  |  current margin: 29.8%",
+        "Sentiment: 0 mention(s), 0 complaint(s), 0.0% negative",
+        "Margin 29.8% is below the 35% target — upward pricing pressure"
+      ],
+      "constraints_checked": [
+        "HC-1: minimum floor = 329.41 SAR  (cost 280.00 / 0.85, ensures 15% margin)",
+        "HC-2: price increase is PERMITTED — neg rate 0.0% <= 30%, complaints 0 < 3, trend 'unknown' is not negative"
+      ],
+      "explanation": "'Foldable Table' has a 29.8% margin at 399.00 SAR — below the 35% target. Sentiment is acceptable (0.0% negative, 0 complaints, trend 'unknown'), so HC-2 does not block an increase. Recommended: 430.77 SAR — new margin: 35.0%. Monitor customer feedback for 48 hours after applying.",
+      "generated_at": "2026-03-18 23:37"
+    },
+    {
+      "product_id": "1006",
+      "title": "Slim Fit Tee",
+      "category": "Clothes > Mens",
+      "current_price": 50.0,
+      "cost": 27.0,
+      "current_margin_pct": 46.0,
+      "action": "HOLD",
+      "recommended_price": 50.0,
+      "new_margin_pct": 46.0,
+      "avg_rating": 4.4,
+      "market_trend": "stable",
+      "competitor_range": "44–52",
+      "avg_daily_complaints": 2.5,
+      "signals_used": [
+        "Price: 50.00 SAR  |  cost: 27.00 SAR  |  current margin: 46.0%",
+        "Rating: 4.4/5.0  |  avg daily complaints: 2.5  |  trend: stable  |  competitor: 44–52 SAR",
+        "Sentiment: 0 mention(s), 0 complaint(s), 0.0% negative",
+        "Margin 46.0% meets or exceeds the 35% target — no margin pressure"
+      ],
+      "constraints_checked": [
+        "HC-1: minimum floor = 31.76 SAR  (cost 27.00 / 0.85, ensures 15% margin)",
+        "HC-2: price increase is PERMITTED — neg rate 0.0% <= 30%, complaints 0 < 3, trend 'stable' is not negative"
+      ],
+      "explanation": "'Slim Fit Tee' has a comfortable 46.0% margin at 50.00 SAR. Rating 4.4/5, trend 'stable', avg 2.5 daily complaints — no signal strong enough to justify a change. Competitor midpoint: ~48 SAR — current price is above market average. Current price maintained.",
+      "generated_at": "2026-03-18 23:37"
+    },
+    {
+      "product_id": "1010",
+      "title": "Portable Blender",
+      "category": "Home Appliances",
+      "current_price": 160.09,
+      "cost": 95.0,
+      "current_margin_pct": 40.7,
+      "action": "HOLD",
+      "recommended_price": 160.09,
+      "new_margin_pct": 40.7,
+      "avg_rating": 3.1,
+      "market_trend": "negative?",
+      "competitor_range": "130–180",
+      "avg_daily_complaints": 16.5,
+      "signals_used": [
+        "Price: 160.09 SAR  |  cost: 95.00 SAR  |  current margin: 40.7%",
+        "Rating: 3.1/5.0  |  avg daily complaints: 16.5  |  trend: negative?  |  competitor: 130–180 SAR",
+        "Sentiment: 2 mention(s), 2 complaint(s), 0.0% negative",
+        "Margin 40.7% meets or exceeds the 35% target — no margin pressure"
+      ],
+      "constraints_checked": [
+        "HC-1: minimum floor = 111.76 SAR  (cost 95.00 / 0.85, ensures 15% margin)",
+        "HC-2: price increase is BLOCKED — market trend is 'negative?'"
+      ],
+      "explanation": "'Portable Blender' has a comfortable 40.7% margin at 160.09 SAR. Rating 3.1/5, trend 'negative?', avg 16.5 daily complaints — no signal strong enough to justify a change. Competitor midpoint: ~155 SAR — current price is above market average. HC-2 would also block any increase (market trend is 'negative?'). Current price maintained.",
+      "generated_at": "2026-03-18 23:37"
+    },
+    {
+      "product_id": "1011",
+      "title": "Wireless EarBud Pro",
+      "category": "",
+      "current_price": 129.01,
+      "cost": 75.0,
+      "current_margin_pct": 41.9,
+      "action": "HOLD",
+      "recommended_price": 129.01,
+      "new_margin_pct": 41.9,
+      "avg_rating": 3.8,
+      "market_trend": "negative",
+      "competitor_range": "109–140",
+      "avg_daily_complaints": 11.5,
+      "signals_used": [
+        "Price: 129.01 SAR  |  cost: 75.00 SAR  |  current margin: 41.9%",
+        "Rating: 3.8/5.0  |  avg daily complaints: 11.5  |  trend: negative  |  competitor: 109–140 SAR",
+        "Sentiment: 8 mention(s), 4 complaint(s), 50.0% negative",
+        "Margin 41.9% meets or exceeds the 35% target — no margin pressure"
+      ],
+      "constraints_checked": [
+        "HC-1: minimum floor = 88.24 SAR  (cost 75.00 / 0.85, ensures 15% margin)",
+        "HC-2: price increase is BLOCKED — negative rate 50.0% > 30% threshold; 4 complaints >= threshold of 3; market trend is 'negative'"
+      ],
+      "explanation": "'Wireless EarBud Pro' has a comfortable 41.9% margin at 129.01 SAR. Rating 3.8/5, trend 'negative', avg 11.5 daily complaints — no signal strong enough to justify a change. Competitor midpoint: ~124 SAR — current price is above market average. HC-2 would also block any increase (negative rate 50.0% > 30% threshold; 4 complaints >= threshold of 3; market trend is 'negative'). Current price maintained.",
+      "generated_at": "2026-03-18 23:37"
+    },
+    {
+      "product_id": "1032",
+      "title": "Kids Sneakers",
+      "category": "Shoes > Kids",
+      "current_price": 179.03,
+      "cost": 143.0,
+      "current_margin_pct": 20.1,
+      "action": "INCREASE",
+      "recommended_price": 196.93,
+      "new_margin_pct": 27.4,
+      "avg_rating": 4.0,
+      "market_trend": "stable",
+      "competitor_range": "160–190",
+      "avg_daily_complaints": 4.5,
+      "signals_used": [
+        "Price: 179.03 SAR  |  cost: 143.00 SAR  |  current margin: 20.1%",
+        "Rating: 4.0/5.0  |  avg daily complaints: 4.5  |  trend: stable  |  competitor: 160–190 SAR",
+        "Sentiment: 4 mention(s), 0 complaint(s), 0.0% negative",
+        "Margin 20.1% is below the 35% target — upward pricing pressure"
+      ],
+      "constraints_checked": [
+        "HC-1: minimum floor = 168.24 SAR  (cost 143.00 / 0.85, ensures 15% margin)",
+        "HC-2: price increase is PERMITTED — neg rate 0.0% <= 30%, complaints 0 < 3, trend 'stable' is not negative"
+      ],
+      "explanation": "'Kids Sneakers' has a 20.1% margin at 179.03 SAR — below the 35% target. Sentiment is acceptable (0.0% negative, 0 complaints, trend 'stable'), so HC-2 does not block an increase. New price is slightly above the competitor range 160–190 SAR. Recommended: 196.93 SAR — new margin: 27.4%. Monitor customer feedback for 48 hours after applying.",
+      "generated_at": "2026-03-18 23:37"
+    }
+  ]
+}

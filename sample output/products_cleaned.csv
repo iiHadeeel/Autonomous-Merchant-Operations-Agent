@@ -1,0 +1,9 @@
+product_id,title,category,price,cost,attributes,description,customer_quote
+1000,Slim Fit T-shirt,Clothes > Mens,49.99,,color=blk; size=L,A popular mens shirt made of cottn.,
+1001,Coffee Press,Kitchen & Dining,90.0,40.0,capacity=1L??,1-liter French press. Maybe borosilcate?,ok quality
+1004,3pc Cook Set – Steel,Kitchen & Dining,250.0,,material=stl; weight=2.5kg,ชุดหม้อสแตนเลส 3 ชิ้น,
+1005,Foldable Table,,399.0,280.0,,Foldable wooden table 120cm x 60cm. Might be pine or beech wood.,
+1006,Slim Fit Tee,Clothes > Mens,49.99,27.0,color=black; size=L,Same model as 101?,
+1010,Portable Blender,Home Appliances,,95.0,500ml,Rechargeable blender (but cable missing?).,
+1011,Wireless EarBud Pro,,129.0,75.0,bt=5; battery_life=5-6 hrs?,Premium earbuds. Noise canselling. Some customers reported issues.,
+1032,Kids Sneakers,Shoes > Kids,179.0,143.0,"color=red, size=32",,
