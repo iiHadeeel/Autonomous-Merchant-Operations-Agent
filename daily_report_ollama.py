@@ -22,20 +22,12 @@
 
  REQUIREMENTS:
    - Python 3.10+
-   - Zero external libraries — only Python's standard library
-   - Internet only needed for Google Fonts 
 =============================================================================
 """
 
-# ── Standard-library 
-import json           # read/write JSON pipeline outputs
-import datetime       # date/time stamps on the report
-from pathlib import Path  # cross-platform file path handling
-
-
-# =============================================================================
-# SECTION 0 — File paths  (edit these to match your folder structure)
-# =============================================================================
+import json           
+import datetime      
+from pathlib import Path 
 
 CATALOG_PATH   = "/Users/hadeel/Desktop/salla/catalog_quality_report.json"
 SENTIMENT_PATH = "/Users/hadeel/Desktop/salla/sentiment_report.json"
@@ -767,7 +759,7 @@ def build_sentiment_section(sentiment: dict) -> str:
     neu_pct = round(sent.get("neutral",  0) / total * 100)
     neg_pct = round(sent.get("negative", 0) / total * 100)
 
-    # ── Sentiment bars ──
+    #  Sentiment bars 
     bars = f"""
     <div class="sentiment-container">
       <div style="font-size:13px;font-weight:600;color:var(--text-sub);margin-bottom:18px;">
@@ -947,7 +939,7 @@ def build_catalog_section(catalog: dict) -> str:
     unique       = total - dupes
     issue_counts = summary.get("issue_type_counts", {})
 
-    # Human-readable label for each issue type key
+    # Human readable label for each issue type key
     issue_labels = {
         "ATTRIBUTE_ABBREV":          "Attribute Abbreviations",
         "UNCERTAIN_DESCRIPTION":     "Uncertain Description",
@@ -1252,7 +1244,7 @@ def main():
     print("  Salla Merchant Agent — Daily Report Generator")
     print("=" * 55)
 
-    # ── Step 1: load inputs ───────────────────────────────
+    #  Step 1: load inputs 
     print("\n[1/3] Loading pipeline outputs...")
     try:
         catalog   = load_json(CATALOG_PATH)
@@ -1265,11 +1257,11 @@ def main():
         print(f"\n   Error: {e}")
         return
 
-    # ── Step 2: build HTML ───────────────────────────────
+    #  Step 2: build HTML 
     print("\n[2/3] Building report HTML...")
     html = build_full_html(catalog, sentiment, pricing)
 
-    # ── Step 3: write file ───────────────────────────────
+    #  Step 3: write file 
     print(f"\n[3/3] Writing report → {OUTPUT_PATH}")
     Path(OUTPUT_PATH).write_text(html, encoding="utf-8")
 
@@ -1289,7 +1281,5 @@ def main():
     print(f"     Open the file in any browser to view it.")
     print("=" * 55 + "\n")
 
-
-# ── Entry point ──────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     main()
