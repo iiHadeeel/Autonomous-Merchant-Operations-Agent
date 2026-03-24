@@ -24,37 +24,14 @@
    products_cleaned.csv        deduplicated, cleaned product list
    catalog_quality_report.json full quality report
 
- ASSUMPTIONS (documented here so evaluators can see the thinking):
-   - Prices written as English words ("ninety") are converted to numbers.
-   - Prices with "SAR" suffix are stripped and stored as plain floats.
-   - "unknown" or "??" in the cost field = intentionally missing (None),
-     NOT an error — we flag it but do not discard the row.
-   - Near-duplicate = same normalised title AND same numeric price.
-     The row with the lowest product_id is kept as the canonical record.
-   - Embedded customer reviews inside the description field are extracted
-     into a separate column (customer_quote) and stripped from the description.
-   - Non-English descriptions are flagged but NOT removed — the merchant
-     may want to review them manually.
-   - Title typos like "Slim Fti T-shirt" are corrected via a known-corrections
-     dictionary. New typos can be added to TITLE_CORRECTIONS below.
-   - Attribute abbreviations (blk, stl, cottn, bt) are flagged but not
-     auto-expanded, because the correct expansion may vary by product context.
-   - Minimum margin threshold = 10%. Products below this are flagged
-     LOW_MARGIN. Negative margin = NEGATIVE_MARGIN (price below cost).
 =============================================================================
 """
 
-# Standard library only — no pip install needed
 import csv
 import json
 import re
 from collections import defaultdict
 from pathlib import Path
-
-
-# =============================================================================
-# SECTION 0 — File paths  (edit these to match your folder)
-# =============================================================================
 
 INPUT_PATH     = "/Users/hadeel/Desktop/salla/products_raw.csv"
 CLEANED_OUTPUT = "/Users/hadeel/Desktop/salla/products_cleaned.csv"
@@ -62,14 +39,13 @@ REPORT_OUTPUT  = "/Users/hadeel/Desktop/salla/catalog_quality_report.json"
 
 
 # =============================================================================
-# SECTION 1 — Cleaning configuration
+# SECTION 1 — Cleaning 
 # =============================================================================
 
 # Minimum gross margin below which a product is flagged LOW_MARGIN
 MIN_MARGIN_PCT = 0.10
 
 # English number words → float values
-# Extend this list if your catalog uses other word-form prices
 WORD_TO_NUMBER: dict = {
     "zero": 0,   "one": 1,    "two": 2,    "three": 3,  "four": 4,
     "five": 5,   "six": 6,    "seven": 7,  "eight": 8,  "nine": 9,
@@ -79,14 +55,12 @@ WORD_TO_NUMBER: dict = {
 }
 
 # Known title typos → correct title
-# Add new entries here as you discover them in the catalog
 TITLE_CORRECTIONS: dict = {
     "slim fti t-shirt": "Slim Fit T-shirt",
     "slim fti tee":     "Slim Fit Tee",
 }
 
 # Category variants → canonical category name
-# Keys must be lowercase; values are the canonical display form
 CATEGORY_MAP: dict = {
     "clothes > mens":   "Clothes > Mens",
     "menswear":         "Clothes > Mens",
@@ -112,7 +86,6 @@ UNCERTAIN_DESC_PATTERNS = [
 ]
 
 # Regex to detect and extract embedded customer reviews
-# Matches patterns like:  Customer said: 'ok quality'.
 CUSTOMER_REVIEW_RE = re.compile(
     r"[Cc]ustomer(?:\s+said)?:?\s*['\"](.+?)['\"]\.?",
     re.IGNORECASE,
@@ -120,7 +93,7 @@ CUSTOMER_REVIEW_RE = re.compile(
 
 
 # =============================================================================
-# SECTION 2 — Per-field cleaning functions
+# SECTION 2 — Per field cleaning functions
 # =============================================================================
 
 def clean_price(raw: str) -> tuple:
@@ -142,14 +115,14 @@ def clean_price(raw: str) -> tuple:
 
     raw = str(raw).strip()
 
-    # Plain number, optionally followed by SAR
+    # Plain number optionally followed by SAR
     m = re.match(r"^([\d.]+)\s*(SAR|sar)?$", raw)
     if m:
         value  = float(m.group(1))
         issues = ["PRICE_HAD_SAR_SUFFIX"] if m.group(2) else []
         return value, issues
 
-    # English word number  (e.g. "ninety")
+    # English word number 
     if raw.lower() in WORD_TO_NUMBER:
         return float(WORD_TO_NUMBER[raw.lower()]), ["PRICE_WAS_WORD"]
 
@@ -161,9 +134,9 @@ def clean_cost(raw: str) -> tuple:
     """
     Parse the cost field into a plain float.
 
-    "unknown" and "??" are treated as intentionally missing — the merchant
+    "unknown" and "??" are treated as intentionally missing the merchant
     may not track cost for every product.  We flag them with MISSING_COST
-    but keep the row rather than discarding it.
+    but keep the row rather than dropping it.
 
     Returns:
       (numeric_value_or_None, list_of_issue_tags)
@@ -182,7 +155,7 @@ def clean_cost(raw: str) -> tuple:
     if m:
         return float(m.group(1)), []
 
-    # Unrecognised format — flag as missing rather than crash
+    # Unrecognised format  flag as missing rather than crash
     return None, ["MISSING_COST"]
 
 
@@ -234,7 +207,7 @@ def clean_attributes(raw: str) -> tuple:
     ATTRIBUTE_ABBREV     — contains known abbreviations (blk, stl, cottn, bt)
 
     The value is returned unchanged — we flag but do not auto-correct,
-    because the correct expansion is context-dependent per product.
+    because the correct expansion is context dependent per product.
 
     Returns:
       (attribute_string, list_of_issue_tags)
@@ -308,7 +281,7 @@ def clean_description(raw: str) -> tuple:
 
 
 # =============================================================================
-# SECTION 3 — Row-level cleaner
+# SECTION 3 — Row level cleaner
 # =============================================================================
 
 def clean_row(raw: dict) -> dict:
@@ -390,7 +363,7 @@ def deduplicate(cleaned_rows: list, dupe_groups: dict) -> list:
     and discard all others.  Non-duplicate rows are always kept.
 
     The "lowest product_id" rule is a simple, deterministic policy that
-    prefers the earliest-created record in the system.
+    prefers the earliest created record in the system.
 
     Returns the deduplicated list, preserving insertion order.
     """
@@ -412,7 +385,7 @@ def deduplicate(cleaned_rows: list, dupe_groups: dict) -> list:
                 unique.append(row)
                 seen_ids.add(pid)
         else:
-            # Not a duplicate — always keep (guard against re-adding)
+            # Not a duplicate  always keep, guard against re adding
             if pid not in seen_ids:
                 unique.append(row)
                 seen_ids.add(pid)
@@ -595,11 +568,6 @@ def run_catalog_analysis(input_path:   str = INPUT_PATH,
         print(f"  {r['product_id']:<8} {r['title']:<30} "
               f"{price_str:>8}  {cost_str:>8}  {margin_str:>7}")
     print(f"{'='*55}\n")
-
-
-# =============================================================================
-# Entry point
-# =============================================================================
 
 if __name__ == "__main__":
     run_catalog_analysis(
