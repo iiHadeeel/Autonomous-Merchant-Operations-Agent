@@ -69,7 +69,6 @@
 =============================================================================
 """
 
-# Standard library only — no pip install needed
 import csv
 import json
 import math
@@ -79,14 +78,9 @@ from collections import defaultdict
 from pathlib import Path
 from dataclasses import dataclass, field, asdict
 
-
-# =============================================================================
-# SECTION 0 — File paths  (edit these to match your folder)
-# =============================================================================
-
 CATALOG_PATH    = "/Users/hadeel/Desktop/salla/products_cleaned.csv"
 SENTIMENT_PATH  = "/Users/hadeel/Desktop/salla/sentiment_report.json"
-PRICING_CTX     = "/Users/hadeel/Desktop/salla/pricing_context.csv"    # optional — leave as-is if absent
+PRICING_CTX     = "/Users/hadeel/Desktop/salla/pricing_context.csv"    
 OUTPUT_JSON     = "/Users/hadeel/Desktop/salla/pricing_recommendations.json"
 OUTPUT_MD       = "/Users/hadeel/Desktop/salla/pricing_recommendations.md"
 
@@ -162,7 +156,7 @@ class ProductSignals:
     negative_mentions: int   = 0
     neg_rate:          float = 0.0   # negative / total_mentions
 
-    # From pricing context  (optional CSV)
+    # From pricing context 
     avg_rating:           object = None   # float or None
     avg_daily_complaints: float  = 0.0
     market_trend:         str    = "unknown"
@@ -417,7 +411,7 @@ def apply_pricing_logic(sig):
     signals_used        = []
     constraints_checked = []
 
-    # ── GATE 0: Data completeness ─────────────────────────────────────────────
+    #  GATE 0: Data completeness 
     # Without both price and cost, no constraint can be safely checked.
     if sig.price_missing and sig.cost_missing:
         return PricingRecommendation(
@@ -759,8 +753,8 @@ def render_markdown(recs):
     ]
 
     icons = {
-        "INCREASE":"⬆️","HOLD":"⏸️","BLOCKED":"🚫",
-        "DATA_INCOMPLETE":"❓","DECREASE":"⬇️",
+        "INCREASE":"","HOLD":"","BLOCKED":"",
+        "DATA_INCOMPLETE":"","DECREASE":"",
     }
     for action, cnt in sorted(action_counts.items()):
         lines.append(f"| {icons.get(action,'•')} {action} | {cnt} |")
@@ -878,7 +872,7 @@ def run_pricing_pipeline(
         rec = apply_pricing_logic(sig)
         recs.append(rec)
         icon = {
-            "INCREASE":"⬆️ ","HOLD":"⏸️ ","BLOCKED":"🚫","DATA_INCOMPLETE":"❓",
+            "INCREASE":" ","HOLD":" ","BLOCKED":"","DATA_INCOMPLETE":"",
         }.get(rec.action, "• ")
         info = ""
         if rec.action == "INCREASE" and rec.recommended_price and rec.current_price:
@@ -915,16 +909,11 @@ def run_pricing_pipeline(
     print(f"\n{'='*55}")
     print("  RESULTS")
     print(f"{'='*55}")
-    print(f"  ⬆️  Increase         : {n_inc}")
-    print(f"  🚫 Blocked (HC-2)   : {n_blk}")
-    print(f"  ⏸️  Hold              : {n_hold}")
-    print(f"  ❓ Data incomplete  : {n_gap}")
+    print(f"    Increase         : {n_inc}")
+    print(f"    Blocked (HC-2)   : {n_blk}")
+    print(f"    Hold              : {n_hold}")
+    print(f"    Data incomplete  : {n_gap}")
     print(f"{'='*55}\n")
-
-
-# =============================================================================
-# Entry point
-# =============================================================================
 
 if __name__ == "__main__":
     run_pricing_pipeline()
